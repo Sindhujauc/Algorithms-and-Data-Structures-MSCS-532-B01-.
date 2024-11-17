@@ -1,0 +1,21 @@
+import time
+
+def measure_time(algorithm, arr):
+    start_time = time.time()
+    algorithm(arr, 0, len(arr) - 1)
+    return time.time() - start_time
+
+# Test cases
+import random
+random_array = [random.randint(1, 1000) for _ in range(1000)]
+sorted_array = sorted(random_array)
+reverse_sorted_array = sorted_array[::-1]
+
+# Measure and compare
+print("Deterministic Quicksort - Random:", measure_time(quicksort, random_array[:]))
+print("Deterministic Quicksort - Sorted:", measure_time(quicksort, sorted_array[:]))
+print("Deterministic Quicksort - Reverse-Sorted:", measure_time(quicksort, reverse_sorted_array[:]))
+
+print("Randomized Quicksort - Random:", measure_time(randomized_quicksort, random_array[:]))
+print("Randomized Quicksort - Sorted:", measure_time(randomized_quicksort, sorted_array[:]))
+print("Randomized Quicksort - Reverse-Sorted:", measure_time(randomized_quicksort, reverse_sorted_array[:]))
